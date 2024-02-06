@@ -38,7 +38,5 @@ jobs:
             -   name: Deploy
                 uses: cloudflare/pages-action@1
                 with:
-                    apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-                    accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
                     projectName: myprofile # e.g. 'my-project'
                     directory: website/build # e.g. 'dist'k
