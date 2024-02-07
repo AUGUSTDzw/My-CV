@@ -67,8 +67,8 @@ jobs:
                     kill "${pid}"
 
                     cp data/resume.html.dist data/files/resume.html
-                    sed -i -E "s|##IMAGE_URL##|https://bucket.myprofile.pro/users/${{github.actor}}/user-card-default.webp?${{github.run_id}}|" data/files/resume.html
-                    sed -i -E "s|##PDF_URL##|https://bucket.myprofile.pro/users/${{github.actor}}/resume-default.pdf?${{github.run_id}}|" data/files/resume.html
+                    sed -i -E "s|##IMAGE_URL##|https://dav.jianguoyun.com/dav/users/${{github.actor}}/user-card-default.webp?${{github.run_id}}|" data/files/resume.html
+                    sed -i -E "s|##PDF_URL##|https://dav.jianguoyun.com/dav/users/${{github.actor}}/resume-default.pdf?${{github.run_id}}|" data/files/resume.html
 
             -   name: Upload files to bucket
                 run: |
@@ -90,7 +90,7 @@ jobs:
 #            discussionId: 755
             body: |
                 :white_check_mark: Your resume was generated with success :tada: :tada:, you can access using the link bellow.
-                **:page_with_curl: https://bucket.myprofile.pro/users/${{github.actor}}/resume.html?run_id=${{github.run_id}}**
+                **:page_with_curl: https://dav.jianguoyun.com/dav/users/${{github.actor}}/resume.html?run_id=${{github.run_id}}**
 
     discussion-comment-failure:
         name: Failure comment
