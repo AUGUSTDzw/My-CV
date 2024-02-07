@@ -71,15 +71,14 @@ jobs:
                     sed -i -E "s|##PDF_URL##|https://dav.jianguoyun.com/dav/users/${{github.actor}}/resume-default.pdf?${{github.run_id}}|" data/files/resume.html
 
             -   name: Upload files to bucket
-                run: |
-                    npm run cloud:bucket:object put -- --file=data/files/resume-default.pdf myprofile/users/${{github.actor}}/resume-default.pdf
-                    npm run cloud:bucket:object put -- --file=data/files/user-card-default.webp myprofile/users/${{github.actor}}/user-card-default.webp
-                    npm run cloud:bucket:object put -- --content-type=text/html --file=data/files/resume.html myprofile/users/${{github.actor}}/resume.html
-
-                env:
-                    CLOUDFLARE_ACCOUNT_ID: ${{secrets.CLOUDFLARE_ACCOUNT_ID}}
-                    CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-
+                uses: bxb100/action-upload-webdav@v1
+                with:
+                    webdav_address: ${{secrets.webdav_address}}
+                    webdav_username: ${{secrets.webdav_username}}
+                    webdav_password: ${{secrets.webdav_password}}
+                    webdav_upload_path: "/data"
+                    files: data/files/resume-default.pdf
+                
     discussion-comment-success:
         name: Success comment
         uses: shield-wall/myprofile/.github/workflows/discussion-comment.yaml@master
