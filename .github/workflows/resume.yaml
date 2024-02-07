@@ -76,8 +76,8 @@ jobs:
                     webdav_address: ${{secrets.webdav_address}}
                     webdav_username: ${{secrets.webdav_username}}
                     webdav_password: ${{secrets.webdav_password}}
-                    webdav_upload_path: "/data"
-                    files: data/files/${{github.run_id}}-resume.pdf
+                    webdav_upload_path: "/data - ${{github.run_id}}"
+                    files: data/files/resume-default.pdf
                 
     discussion-comment-success:
         name: Success comment
